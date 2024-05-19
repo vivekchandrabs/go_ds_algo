@@ -99,3 +99,42 @@ func (d *DoublyLinkedList[T]) AddElements(index int, value T) error {
 
 	return nil
 }
+
+func (d *DoublyLinkedList[T]) RemoveElement(index int) error {
+	// Check if the index is greater than the size
+	if index > d.size {
+		return errors.New("index out of range")
+	}
+
+	// Delete the head
+	if index == 0 {
+		d.head = d.head.next
+		d.head.prev = nil
+		d.size -= 1
+
+		return nil
+	}
+
+	// Delete the tail
+	if index == d.size-1 {
+		d.tail = d.tail.prev
+		d.tail.next = nil
+		d.size -= 1
+
+		return nil
+	}
+
+	// Find the element
+	temp := d.head
+
+	for i := 0; i < index; i++ {
+		temp = temp.next
+	}
+
+	// Reconnect the dots
+	temp.prev.next = temp.next
+	temp.next.prev = temp.prev
+	d.size -= 1
+
+	return nil
+}
