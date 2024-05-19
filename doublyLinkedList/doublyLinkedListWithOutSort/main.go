@@ -35,4 +35,34 @@ func main() {
 
 	// Print the list in reverse
 	fmt.Println(dl.PrintReverse())
+
+	err = dl.RemoveElement(1)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	fmt.Println("After removing element at index 1")
+
+	// Print the list
+	fmt.Println(dl.PrintForward())
+
+	fmt.Println("After removing element at index 0")
+
+	err = dl.RemoveElement(0)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	// Print the list
+	fmt.Println(dl.PrintForward())
+
+	fmt.Println("After removing element at index 1")
+
+	err = dl.RemoveElement(1)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	// Print the list
+	fmt.Println(dl.PrintForward())
 }
